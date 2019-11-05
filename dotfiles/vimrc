@@ -1,0 +1,157 @@
+set t_Co=256
+let mapleader = "\<Space>"
+execute pathogen#infect()
+set nocompatible
+filetype plugin on
+syntax on
+filetype plugin indent on
+set background=dark
+colorscheme jellybeans
+set hidden
+set ignorecase
+set smartcase
+set scrolloff=3
+set ruler
+set hlsearch
+set incsearch
+set cmdheight=2
+set lcs=tab:>-,trail:.
+set visualbell
+set showcmd
+set mouse=a
+"set colorcolumn=80
+highlight ColorColumn ctermbg=white
+call matchadd('ColorColumn', '\%81v', 80)
+
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set relativenumber number
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" don't move on *
+nnoremap * *<c-o>
+
+autocmd InsertEnter * :set nu
+autocmd InsertLeave * :set nonu
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ["flake8"]
+let g:NERDTreeWinPos = "right"
+nmap <silent> <F3> :NERDTreeToggle<CR>
+nmap <silent> <F2> :SyntasticToggleMode<CR>
+nmap <silent> <F4> :TagbarToggle<CR>
+nmap <silent> <F5> :SyntasticCheck<CR>
+let g:airline_symbols_ascii = 1
+set cursorline
+set cursorcolumn
+
+" CtrlP settings
+let g:ctrlp_map = '<leader>fs'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['buffertag']
+let g:ctrlp_by_filename = 1                 " search for filenames instead of full paths
+let g:ctrlp_tabpage_position = 'ac'         " open tab after the current one
+nnoremap <leader>fb :CtrlPBuffer<CR>
+nnoremap <leader>fm :CtrlPMRU<CR>
+nnoremap <leader>tb :CtrlPBufTag<CR>
+
+" CPP SYNTAX CHECKKER
+" let g:syntastic_cpp_clang_exec = '/usr/bin/clang'
+let g:syntastic_cpp_checkers = ['clang', 'gcc']
+" let g:syntastic_cpp_compiler = 'gcc'
+let g:ycm_show_diagnostics_ui = 0
+" AND ALSO CHECK HEADER FILES
+let g:syntastic_cpp_check_header = 1
+" CPP AUTO COMPLETION
+let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" VIM AIRLINE BUFFERRLIST ON TOP
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+" Startify FOO
+let g:startify_session_persistence = 1
+
+
+" Enhanced CPP Highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+tnoremap <Esc> <C-\><C-n>
+
+" Disable swap file
+set noswapfile
+
+" Rainbow Parantheses
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['Darkblue', 'darkgreen', 'darkred', 'darkcyan', 'darkmagenta', 'gray', 'red'],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold', 'start=/</ end=/>/ fold'],
+\	'separately': {
+\		'*': {},
+\		'tex': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\		},
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\		},
+\		'vim': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'css': 0,
+\	}
+\}
+let g:rainbow_active = 1

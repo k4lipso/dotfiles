@@ -1,0 +1,44 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=100000
+# bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/kalipso/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+alias telegram="/home/kalipso/programms/Telegram/Telegram"
+alias aliasadd="/home/kalipso/github/aliasadd/aliasadd.sh"
+alias c='clear'
+alias ya='yaourt'
+alias pacget='sudo pacman -S'
+alias update='sudo pacman -Syu'
+alias torb='/home/kalipso/programms/tor-browser_de'
+alias wtest='echo "############################# TESTING IP ##########################################################"; ping -c 1 8.8.8.8; echo "############################# TESTING HOSTNAME ####################################################"; ping -c 1 www.google.com'
+alias shutnow='sudo shutdown -h now'
+alias wup='sudo ip link set dev wlp3s0 up'
+alias wdown='sudo ip link set dev wlp3s0 down'
+alias wdhcp='sudo dhcpcd wlp3s0'
+alias kdhcp='sudo killall dhcpcd'
+alias wetter='curl wttr.in/dresden'
+alias mond='curl wttr.in/moon'
+alias yupdate='yaourt -Syu'
+alias youtube-mp3='youtube-dl --extract-audio --audio-format mp3'
+alias dw='dmesg -w'
+alias remove='sudo pacman -R'
+alias bmon='sudo bmon -i netlink:notc -o "curses:details;info" -p \!lo'
+alias zshs='/home/kalipso/github/search_history/sh'
+alias lofi='mpv --cache-secs 60 -no-video "https://www.youtube.com/watch?v=TabMg56daZ0"'
+alias mpva='mpv -no-video'
+alias ddwttr='curl wttr.in/dresden'
+alias invertx='xcalib -invert -alter'
+alias cp="cp -v"
+alias wefunkradio="mpv /home/kalipso/media/music/radio.pls"
+alias deepmix="mpv /home/kalipso/media/music/deepmix128.pls"
+alias nw_up='sudo wpa_supplicant -B -i wlp3s0 -c .config/self/wpa.conf; sudo dhcpcd wlp61s0; wdhcp; sudo bmon -i netlink:notc -o "curses:details;info" -p \!lo'
+alias backupkali='rsync -av --progress -delete -e "ssh -p 12346" /home/kalipso sinc@10.0.0.42:/home/sinc/backup/kali_home/'
+alias vim='nvim'
+
