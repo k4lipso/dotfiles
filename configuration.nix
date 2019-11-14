@@ -79,11 +79,16 @@ in
      oh-my-zsh
      rsync
      neovim
-     xorg.xbacklight
+     #xorg.xbacklight
      gajim
      pass
-     # throttled
      gparted
+     nmap
+     mpv
+     killall
+     direnv
+     lm-sensors
+     youtube-dl
    ];
 
   programs.zsh = {
