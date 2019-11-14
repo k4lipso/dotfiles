@@ -10,6 +10,9 @@ zstyle :compinstall filename '/home/kalipso/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+eval "$(direnv hook zsh)"
+
 alias telegram="/home/kalipso/programms/Telegram/Telegram"
 alias aliasadd="/home/kalipso/github/aliasadd/aliasadd.sh"
 alias c='clear'
@@ -19,9 +22,9 @@ alias update='sudo pacman -Syu'
 alias torb='/home/kalipso/programms/tor-browser_de'
 alias wtest='echo "############################# TESTING IP ##########################################################"; ping -c 1 8.8.8.8; echo "############################# TESTING HOSTNAME ####################################################"; ping -c 1 www.google.com'
 alias shutnow='sudo shutdown -h now'
-alias wup='sudo ip link set dev wlp3s0 up'
-alias wdown='sudo ip link set dev wlp3s0 down'
-alias wdhcp='sudo dhcpcd wlp3s0'
+alias wup='sudo ip link set dev wlp61s0 up'
+alias wdown='sudo ip link set dev wlp61s0 down'
+alias wdhcp='sudo dhcpcd wlp61s0'
 alias kdhcp='sudo killall dhcpcd'
 alias wetter='curl wttr.in/dresden'
 alias mond='curl wttr.in/moon'
@@ -38,7 +41,7 @@ alias invertx='xcalib -invert -alter'
 alias cp="cp -v"
 alias wefunkradio="mpv /home/kalipso/media/music/radio.pls"
 alias deepmix="mpv /home/kalipso/media/music/deepmix128.pls"
-alias nw_up='sudo wpa_supplicant -B -i wlp3s0 -c .config/self/wpa.conf; sudo dhcpcd wlp61s0; wdhcp; sudo bmon -i netlink:notc -o "curses:details;info" -p \!lo'
+alias nw_up='sudo wpa_supplicant -B -i wlp61s0 -c .config/self/wpa.conf; sudo dhcpcd wlp61s0; wdhcp; sudo bmon -i netlink:notc -o "curses:details;info" -p \!lo'
 alias backupkali='rsync -av --progress -delete -e "ssh -p 12346" /home/kalipso sinc@10.0.0.42:/home/sinc/backup/kali_home/'
 alias vim='nvim'
 

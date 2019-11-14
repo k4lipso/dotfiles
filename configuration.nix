@@ -1,5 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
@@ -14,6 +12,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
+      <nixos-hardware/lenovo/thinkpad/t480s>
       ./hardware-configuration.nix
       "${home-manager}/nixos"
     ];
@@ -83,7 +82,8 @@ in
      xorg.xbacklight
      gajim
      pass
-     throttled
+     # throttled
+     gparted
    ];
 
   programs.zsh = {
@@ -132,13 +132,19 @@ in
 
   home-manager.users.root =
   {
+    programs.git = {
+      enable = true;
+      userName = "kalipso";
+      userEmail = "kalipso@c3d2.de";
+    };
+
     xdg.configFile."../.vimrc".source = ./dotfiles/vimrc;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; };
 
   # List services that you want to enable:
 
@@ -146,7 +152,7 @@ in
   # services.openssh.enable = true;
   services.tlp.enable = true;
 
-  services.throttled.enable = true;
+  # services.throttled.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
