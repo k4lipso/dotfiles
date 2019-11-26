@@ -87,7 +87,6 @@ in
      mpv
      killall
      direnv
-     lm-sensors
      youtube-dl
    ];
 
