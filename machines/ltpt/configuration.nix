@@ -2,19 +2,13 @@
 
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "05dabb7239254c0d9b2f314d7aa73923917bd1cd";
-    ref = "master";
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t480s>
       ./hardware-configuration.nix
-      "${home-manager}/nixos"
+      ../../modules/xserver.nix
+      ../../modules/home-manager.nix
     ];
 
   systemd.services.systemd-user-sessions.enable = false;
@@ -33,8 +27,6 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s25.useDHCP = true;
-  networking.interfaces.wlp3s0.useDHCP = true;
   networking.hostId = "1423acbd";
 
   # Configure network proxy if necessary
@@ -118,33 +110,6 @@ in
     shell = pkgs.zsh;
   };
 
-  home-manager.users.kalipso =
-  {
-    programs.git = {
-      enable = true;
-      userName = "kalipso";
-      userEmail = "kalipso@c3d2.de";
-    };
-
-    xdg.configFile."../.zshrc".source = ./dotfiles/zshrc;
-    xdg.configFile."../.vimrc".source = ./dotfiles/vimrc;
-    xdg.configFile."../.spacemacs".source = ./dotfiles/spacemacs;
-    xdg.configFile."i3".source = ./dotfiles/i3;
-    xdg.configFile."self".source = ./dotfiles/self;
-
-  };
-
-  home-manager.users.root =
-  {
-    programs.git = {
-      enable = true;
-      userName = "kalipso";
-      userEmail = "kalipso@c3d2.de";
-    };
-
-    xdg.configFile."../.vimrc".source = ./dotfiles/vimrc;
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -182,39 +147,6 @@ in
 
   #TimeZone
   time.timeZone = "Europe/Berlin";
-
-  # Enable the X11 windowing system.
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.dpi = 144;
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      default = "xfce";
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-	i3blocks
-      ];
-    };
-  };
-
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
