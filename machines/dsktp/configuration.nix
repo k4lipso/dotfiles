@@ -15,6 +15,7 @@ in
       #<nixos-hardware/lenovo/thinkpad/t480s>
       ./hardware-configuration.nix
       "${home-manager}/nixos"
+      ../../modules/xserver.nix
     ];
 
   systemd.services.systemd-user-sessions.enable = false;
@@ -126,11 +127,11 @@ in
       userEmail = "kalipso@c3d2.de";
     };
 
-    xdg.configFile."../.zshrc".source = ./dotfiles/zshrc;
-    xdg.configFile."../.vimrc".source = ./dotfiles/vimrc;
-    xdg.configFile."../.spacemacs".source = ./dotfiles/spacemacs;
-    xdg.configFile."i3".source = ./dotfiles/i3;
-    xdg.configFile."self".source = ./dotfiles/self;
+    xdg.configFile."../.zshrc".source = ../../dotfiles/zshrc;
+    xdg.configFile."../.vimrc".source = ../../dotfiles/vimrc;
+    xdg.configFile."../.spacemacs".source = ../../dotfiles/spacemacs;
+    xdg.configFile."i3".source = ../../dotfiles/i3;
+    xdg.configFile."self".source = ../../dotfiles/self;
 
   };
 
@@ -142,7 +143,7 @@ in
       userEmail = "kalipso@c3d2.de";
     };
 
-    xdg.configFile."../.vimrc".source = ./dotfiles/vimrc;
+    xdg.configFile."../.vimrc".source = ../../dotfiles/vimrc;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -182,32 +183,6 @@ in
 
   #TimeZone
   time.timeZone = "Europe/Berlin";
-
-  # Enable the X11 windowing system.
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      default = "none";
-      xterm.enable = false;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-	i3blocks
-      ];
-    };
-  };
 
 
   # This value determines the NixOS release with which your system is to be
