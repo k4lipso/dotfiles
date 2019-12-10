@@ -2,20 +2,13 @@
 
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "05dabb7239254c0d9b2f314d7aa73923917bd1cd";
-    ref = "master";
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
       #<nixos-hardware/lenovo/thinkpad/t480s>
       ./hardware-configuration.nix
-      "${home-manager}/nixos"
       ../../modules/xserver.nix
+      ../../modules/home-manager.nix
     ];
 
   systemd.services.systemd-user-sessions.enable = false;
@@ -117,33 +110,6 @@ in
     home = "/home/kalipso";
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
-  };
-
-  home-manager.users.kalipso =
-  {
-    programs.git = {
-      enable = true;
-      userName = "kalipso";
-      userEmail = "kalipso@c3d2.de";
-    };
-
-    xdg.configFile."../.zshrc".source = ../../dotfiles/zshrc;
-    xdg.configFile."../.vimrc".source = ../../dotfiles/vimrc;
-    xdg.configFile."../.spacemacs".source = ../../dotfiles/spacemacs;
-    xdg.configFile."i3".source = ../../dotfiles/i3;
-    xdg.configFile."self".source = ../../dotfiles/self;
-
-  };
-
-  home-manager.users.root =
-  {
-    programs.git = {
-      enable = true;
-      userName = "kalipso";
-      userEmail = "kalipso@c3d2.de";
-    };
-
-    xdg.configFile."../.vimrc".source = ../../dotfiles/vimrc;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
