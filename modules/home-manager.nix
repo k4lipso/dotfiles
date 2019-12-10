@@ -23,6 +23,7 @@ in
 
     xdg.configFile."../.zshrc".source = ../dotfiles/zshrc;
     xdg.configFile."../.vimrc".source = ../dotfiles/vimrc;
+    xdg.configFile."../.Xresources".source = ../dotfiles/Xresources;
     xdg.configFile."../.spacemacs".source = ../dotfiles/spacemacs;
     xdg.configFile."i3".source = ../dotfiles/i3;
     xdg.configFile."self".source = ../dotfiles/self;
