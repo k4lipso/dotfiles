@@ -38,6 +38,8 @@ values."
            hybrid-style-enable-hjkl-bindings t)
      ;; better-defaults
      emacs-lisp
+     
+     nixos
 
      ;;vs debugger
      dap
