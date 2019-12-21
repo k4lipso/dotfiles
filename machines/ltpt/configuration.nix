@@ -34,6 +34,7 @@
     shell = pkgs.zsh;
   };
 
+  services.xserver.dpi = 144;
   # services.throttled.enable = true;
 
   # Open ports in the firewall.
