@@ -51,6 +51,7 @@
     okular
     unzip
     zip
+    qtcreator
   ];
 
   programs.zsh = {

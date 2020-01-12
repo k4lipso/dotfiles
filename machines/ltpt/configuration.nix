@@ -12,13 +12,16 @@
       ../../modules/general.nix
     ];
 
+  environment.systemPackages = with pkgs; [
+    dhcpcd
+  ];
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.useDHCP = false;
   networking.hostId = "1423acbd";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-
+  networking.firewall.enable = true;
+  networking.firewall.allowPing = false;
 
   # Select internationalisation properties.
   i18n = {
@@ -35,16 +38,6 @@
   };
 
   services.xserver.dpi = 144;
-  # services.throttled.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
