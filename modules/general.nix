@@ -82,6 +82,8 @@
   environment.pathsToLink = [ "/libexec" ];
   environment.variables.EDITOR = "urxvt";
 
+  fonts.enableDefaultFonts = true;
+  fonts.enableFontDir = true;
   fonts.fonts = with pkgs; [
     hermit
     source-code-pro

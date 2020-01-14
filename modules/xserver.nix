@@ -6,10 +6,11 @@
     layout = "us";
     # xkbOptions = "eurosign:e";
     libinput.enable = true;
-    
+
+    displayManager.defaultSession = "none+i3";
 
     desktopManager = {
-      default = "none";
+      #default = "none";
       xterm.enable = false;
     };
 
@@ -19,7 +20,7 @@
         dmenu
         i3status
         i3lock
-	i3blocks
+	      i3blocks
       ];
     };
   };
