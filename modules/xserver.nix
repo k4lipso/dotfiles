@@ -25,4 +25,8 @@
     };
   };
 
+  services.picom.enable = true;
+  services.picom.backend = "glx";
+  services.picom.vSync = true;
+
 }

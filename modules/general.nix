@@ -52,6 +52,7 @@
     unzip
     zip
     qtcreator
+    feh
   ];
 
   programs.zsh = {
