@@ -41,6 +41,7 @@ values."
      
      nixos
 
+     python
      ;;vs debugger
      dap
 

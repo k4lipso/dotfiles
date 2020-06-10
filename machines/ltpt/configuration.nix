@@ -14,6 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     dhcpcd
+    ncmpcpp
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -37,6 +38,12 @@
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
   };
+
+  services.throttled.enable = true;
+  services.tor.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "kalipso" ];
 
 
   # This value determines the NixOS release with which your system is to be
