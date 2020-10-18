@@ -84,7 +84,7 @@
   environment.variables.EDITOR = "urxvt";
 
   fonts.enableDefaultFonts = true;
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     hermit
     source-code-pro

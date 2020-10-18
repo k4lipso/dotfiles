@@ -21,8 +21,8 @@
   networking.useDHCP = false;
   networking.hostId = "1423acbd";
 
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = false;
+  #networking.firewall.enable = true;
+  networking.firewall.allowPing = true;
 
   # Select internationalisation properties.
   console.font = "Lat2-Terminus16";
@@ -39,8 +39,10 @@
     shell = pkgs.zsh;
   };
 
-  services.throttled.enable = true;
+  services.throttled.enable = false;
   services.tor.enable = true;
+  services.tor.torsocks.enable = true;
+  services.tor.client.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "kalipso" ];
