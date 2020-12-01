@@ -1,4 +1,4 @@
-{...}:
+{pkgs, ...}:
 
 let
   home-manager = builtins.fetchGit {
@@ -15,6 +15,13 @@ in
 
   home-manager.users.kalipso =
   {
+    programs.vim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
+      settings = { ignorecase = true; };
+    };
+
     programs.git = {
       enable = true;
       userName = "kalipso";
@@ -23,6 +30,7 @@ in
 
     xdg.configFile."../.zshrc".source = ../dotfiles/zshrc;
     xdg.configFile."../.vimrc".source = ../dotfiles/vimrc;
+    xdg.configFile."nvim/init.vim".source = ../dotfiles/vimrc;
     xdg.configFile."../.Xresources".source = ../dotfiles/Xresources;
     xdg.configFile."../.spacemacs".source = ../dotfiles/spacemacs;
     xdg.configFile."i3".source = ../dotfiles/i3;
