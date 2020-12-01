@@ -48,12 +48,6 @@ in
 
   networking.dhcpcd.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    wget
-    vim
-    git
-  ];
-
   services.openssh.enable = true;
   services.openssh.ports = [ 2222 ];
   users.users.root.openssh.authorizedKeys.keys = AllowedKeys;
@@ -64,19 +58,6 @@ in
     openssh.authorizedKeys.keys = AllowedKeys;
     shell = pkgs.zsh;
   };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    ohMyZsh = {
-      enable = true;
-      #plugins = [ "git" "man" ];
-      theme = "robbyrussell";
-    };
-  };
-
 
 
   # This value determines the NixOS release from which the default
