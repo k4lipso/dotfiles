@@ -9,6 +9,7 @@
       ./hardware-configuration.nix
       ../../modules/xserver.nix
       ../../modules/home-manager.nix
+      ../../modules/minimal.nix
       ../../modules/general.nix
     ];
 

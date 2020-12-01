@@ -12,6 +12,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/home-manager.nix
+      ../../modules/minimal.nix
     ];
 
   boot.loader.grub.enable = true;
