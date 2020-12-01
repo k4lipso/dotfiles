@@ -1,1 +1,3 @@
 dotfiles/self/wpa.conf
+machines/htznr/network_config.nix
+deployment_secrets.nix
