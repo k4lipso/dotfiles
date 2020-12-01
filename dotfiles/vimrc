@@ -40,21 +40,21 @@ nnoremap * *<c-o>
 
 autocmd InsertEnter * :set nu
 autocmd InsertLeave * :set nonu
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["flake8"]
-let g:NERDTreeWinPos = "right"
-nmap <silent> <F3> :NERDTreeToggle<CR>
-nmap <silent> <F2> :SyntasticToggleMode<CR>
-nmap <silent> <F4> :TagbarToggle<CR>
-nmap <silent> <F5> :SyntasticCheck<CR>
+#
+#set statusline+=%#warningmsg#
+#set statusline+=%{SyntasticStatuslineFlag()}
+#set statusline+=%*
+#
+#let g:syntastic_always_populate_loc_list = 1
+#let g:syntastic_auto_loc_list = 1
+#let g:syntastic_check_on_open = 0
+#let g:syntastic_check_on_wq = 0
+#let g:syntastic_python_checkers = ["flake8"]
+#let g:NERDTreeWinPos = "right"
+#nmap <silent> <F3> :NERDTreeToggle<CR>
+#nmap <silent> <F2> :SyntasticToggleMode<CR>
+#nmap <silent> <F4> :TagbarToggle<CR>
+#nmap <silent> <F5> :SyntasticCheck<CR>
 let g:airline_symbols_ascii = 1
 set cursorline
 set cursorcolumn

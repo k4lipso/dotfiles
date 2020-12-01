@@ -51,6 +51,7 @@ in
   services.openssh.enable = true;
   services.openssh.ports = [ 2222 ];
   users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+  services.openssh.passwordAuthentication = false;
 
   users.users.kalipso = {
     isNormalUser = true;

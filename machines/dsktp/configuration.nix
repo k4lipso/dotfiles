@@ -24,6 +24,37 @@ in
     steam
   ];
 
+  boot.initrd.kernelModules = [  "igb" ];
+
+  boot.initrd.network = {
+    enable = true;
+    ssh = {
+      enable = true;
+      # Use a different port than your usual SSH port!
+      port = 2233;
+      hostKeys = [ "/etc/secrets/initrd/ssh_host_rsa_key" "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+      authorizedKeys = Keys.Kalipso;
+    };
+    postCommands = ''
+      echo "zfs load-key -a; killall zfs" >> /root/.profile
+    '';
+  };
+
+
+  systemd.network = {
+    enable = true;
+    networks."enp7s0".extraConfig =
+      ''
+      [Match]
+      Name = enp7s0
+      [Network]
+      # optionally you can do the same for ipv4 and disable DHCP (networking.dhcpcd.enable = false;)
+      Address =  10.0.1.223
+      Gateway = 10.0.1.1
+      '';
+  };
+
+
 #  services.weechat.enable = true;
 #  services.tor.enable = true;
 
@@ -33,8 +64,7 @@ in
   '';
 
   networking.hostName = "desktop"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Disable networkmanager
-  networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
   networking.hostId = "1337acbd";
 
   # Select internationalisation properties.
@@ -47,7 +77,9 @@ in
 
   services.openssh.enable = true;
   services.openssh.ports = [ 2222 ];
-  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+  services.openssh.passwordAuthentication = false;
+
+  #users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
 
   users.users.kalipso = {
     isNormalUser = true;
