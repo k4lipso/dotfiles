@@ -2,6 +2,9 @@
 
 { config, pkgs, ... }:
 
+let
+  Keys = import ../../ssh_keys.nix;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -42,10 +45,15 @@
   console.font = "Lat2-Terminus16";
   console.keyMap = "us";
 
+  services.openssh.enable = true;
+  services.openssh.ports = [ 2222 ];
+  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+
   users.users.kalipso = {
     isNormalUser = true;
     home = "/home/kalipso";
     extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys = Keys.Kalipso;
     shell = pkgs.zsh;
   };
 

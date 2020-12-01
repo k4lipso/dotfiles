@@ -5,7 +5,7 @@
 { config, pkgs, lib, ... }:
 
 let
- AllowedKeys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCfDz5teTvRorVtpMj7i3pffD8W4Dn3Aiqre5L4WZq8Wc4bh2OjabGnIcDWpeToKf38n5m0d95OkIbARJwFN7KlbuQbmnIJ5n6pUj/zzRQ3dQTeSsUjkvdbSXVvTcDczMWwLixc/UKP1DMbiLHz5ZSywPTSH2l40lg74q7tSFGBwMy8uy4tsdp2d2sUIDfpvgGj3Pq+zkQHWyFR5BYyCLDfJMTQvGO0bEsbRIDOjkH8YVni46ds6sQKMgc+L2vPo8S3neFZBQRlERVRvIAzdLiBWqGkiw4YgWQA8ocTfWp9DVzW+BZiatc34+AX3KtLEF1Oz76YsKjBttSQL4myUucuskz2Bs7UYvAsDFlWyiJ43ayZNzvG63m1UVsAoq84IhNYsdkPhd+G1rtnG0KxPVAtn7RkAGt8t7ObU+6xWayHcpSteNeE+QyH9nNmJcXNNKfoOeP4vHUBrBTeURafw527yuZDOYknJmg3O+nkeGseIgBYgq/As4+dD6vhp03Y5chjU4/FC6nEjsGPRdfe2RZx+0cqJkLgdd1paGByUfPfaUKykw4TsCUAiDucRwBjU32MLslUbyzeEkjzOJzOD5Frif3jZZLxaNP2QcHRbTiiKkdn+WFJmjr3BdC60pm7hqvmDxl0UZcz9hDv3wZUALUc92TQXnWc8GicKdpQgRYDRQ== kalipso@c3d2.de" ];
+ Keys = ../../ssh_keys.nix;
 in
 {
   imports =
@@ -31,7 +31,7 @@ in
       hostKeys = [ "/var/dropbear/initrd-openssh-key" ];
       # All users being a member of the "wheel" group are allowed to connect and enter the password.
       #authorizedKeys = with lib; concatLists (mapAttrsToList (name: user: if elem "wheel" user.extraGroups then user.openssh.authorizedKeys.keys else []) config.users.users);
-      authorizedKeys = AllowedKeys;
+      authorizedKeys = Keys.Kalipso;
     };
     postCommands = ''
       echo "zfs load-key -a; killall zfs" >> /root/.profile
@@ -56,12 +56,12 @@ in
 
   services.openssh.enable = true;
   services.openssh.ports = [ 2222 ];
-  users.users.root.openssh.authorizedKeys.keys = AllowedKeys;
+  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
 
   users.users.kalipso = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = AllowedKeys;
+    openssh.authorizedKeys.keys = Keys.Kalipso;
     shell = pkgs.zsh;
   };
 
