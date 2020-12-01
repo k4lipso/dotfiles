@@ -4,6 +4,7 @@
 
 let
   Keys = import ../../ssh_keys.nix;
+  NetworkConfig = import ./network_config.nix;
 in
 {
   imports =
@@ -43,15 +44,7 @@ in
 
   systemd.network = {
     enable = true;
-    networks."enp7s0".extraConfig =
-      ''
-      [Match]
-      Name = enp7s0
-      [Network]
-      # optionally you can do the same for ipv4 and disable DHCP (networking.dhcpcd.enable = false;)
-      Address =  10.0.1.223
-      Gateway = 10.0.1.1
-      '';
+    networks."enp7s0".extraConfig = NetworkConfig;
   };
 
 
@@ -79,7 +72,7 @@ in
   services.openssh.ports = [ 2222 ];
   services.openssh.passwordAuthentication = false;
 
-  #users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
 
   users.users.kalipso = {
     isNormalUser = true;
