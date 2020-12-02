@@ -14,6 +14,10 @@ in
       ./hardware-configuration.nix
       ../../modules/home-manager.nix
       ../../modules/minimal.nix
+      ./nginx.nix
+      ./nextcloud.nix
+      ./postgresql.nix
+      ./hydra.nix
     ];
 
   boot.loader.grub.enable = true;
