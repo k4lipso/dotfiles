@@ -6,6 +6,7 @@
 
 let
  Keys = import ../../ssh_keys.nix;
+ DeploymentSecrets = import ../../deployment_secrets.nix;
 in
 {
   imports =
@@ -49,7 +50,7 @@ in
   networking.dhcpcd.enable = false;
 
   services.openssh.enable = true;
-  services.openssh.ports = [ 2222 ];
+  services.openssh.ports = [ DeploymentSecrets.htznr_ssh_port ];
   users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
   services.openssh.passwordAuthentication = false;
 

@@ -15,6 +15,7 @@ in
       deployment =
       {
         targetHost = secrets.htznr_ip;
+        targetPort = secrets.htznr_ssh_port;
       };
     };
 
