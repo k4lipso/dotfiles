@@ -41,6 +41,7 @@ in
 
   networking.hostId = "8f5bb624"; 
   networking.usePredictableInterfaceNames = false;
+  networking.hostName = "htznr";
 
   systemd.network = {
     enable = true;
