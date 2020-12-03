@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    bind
     wireguard
     wget
     vim
@@ -26,6 +27,14 @@
     unzip
     zip
   ];
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = 
+    ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   programs.zsh = {
     enable = true;
