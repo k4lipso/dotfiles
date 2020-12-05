@@ -2,6 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
+    dhcpcd
+    inetutils
+    tcpdump
     bind
     wireguard
     wget
