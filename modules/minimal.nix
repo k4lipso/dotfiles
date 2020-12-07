@@ -47,7 +47,7 @@
     ohMyZsh = {
       enable = true;
       plugins = [ "git" "man" ];
-      theme = "robbyrussell";
+      theme = "fino-time";
     };
   };
 
