@@ -54,6 +54,11 @@
 
   nix.trustedUsers = ["hydra" "hydra-evaluator" "hydra-queue-runner"];
 
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "/etc/nix/htznr/secret";
+  };
+
     #nix.buildMachines = [
     #  {
     #    hostName = "localhost";
