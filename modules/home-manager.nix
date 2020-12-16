@@ -17,8 +17,10 @@ in
   {
     programs.vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [
-        nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
+      plugins = with pkgs.vimPlugins; [ spacevim ];
+        
+      #plugins = with pkgs.vimPlugins; [
+      #  nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
       settings = { ignorecase = true; };
     };
 
@@ -32,7 +34,8 @@ in
     xdg.configFile."../.vimrc".source = ../dotfiles/vimrc;
     xdg.configFile."nvim/init.vim".source = ../dotfiles/vimrc;
     xdg.configFile."../.Xresources".source = ../dotfiles/Xresources;
-    xdg.configFile."../.spacemacs".source = ../dotfiles/spacemacs;
+    #xdg.configFile."../.spacemacs".source = ../dotfiles/spacemacs;
+    xdg.configFile."../.doom.d".source = ../dotfiles/doom_emacs;
     xdg.configFile."i3".source = ../dotfiles/i3;
     xdg.configFile."self".source = ../dotfiles/self;
 
