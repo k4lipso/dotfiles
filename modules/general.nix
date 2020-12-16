@@ -13,7 +13,6 @@
   environment.systemPackages = with pkgs; [
     wpa_supplicant
     chromium
-    qutebrowser
     thunderbird
     vlc
     gimp
