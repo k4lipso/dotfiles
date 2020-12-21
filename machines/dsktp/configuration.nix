@@ -15,6 +15,7 @@ in
       ../../modules/home-manager.nix
       ../../modules/minimal.nix
       ../../modules/general.nix
+      ../../modules/tor.nix
     ];
 
   hardware.opengl.driSupport32Bit = true;

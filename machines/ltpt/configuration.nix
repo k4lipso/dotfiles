@@ -11,6 +11,7 @@
       ../../modules/home-manager.nix
       ../../modules/minimal.nix
       ../../modules/general.nix
+      ../../modules/tor.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -41,9 +42,6 @@
   };
 
   services.throttled.enable = false;
-  services.tor.enable = true;
-  services.tor.torsocks.enable = true;
-  services.tor.client.enable = true;
 
   services.picom.enable = true;
   services.picom.backend = "glx";
