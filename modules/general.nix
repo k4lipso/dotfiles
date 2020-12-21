@@ -33,6 +33,7 @@
     okular
     qtcreator
     feh
+    element-desktop
   ];
 
   # Enable the OpenSSH daemon.
