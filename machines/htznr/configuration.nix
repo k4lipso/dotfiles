@@ -20,6 +20,11 @@ in
       ./hydra.nix
     ];
 
+  environment.systemPackages = with pkgs; [
+    php
+    php74Packages.composer
+  ];
+
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "/dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL1331LAGZR8YH" "/dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL1331LAGZ7TTH" ];
   boot.supportedFilesystems = [ "zfs" ];
