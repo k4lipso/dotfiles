@@ -52,7 +52,7 @@
   hardware.pulseaudio.enable = true;
 
   environment.pathsToLink = [ "/libexec" ];
-  environment.variables.EDITOR = "urxvt";
+  environment.variables.EDITOR = "urxvt-unicode";
 
   fonts.enableDefaultFonts = true;
   fonts.fontDir.enable = true;
