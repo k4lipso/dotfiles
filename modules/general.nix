@@ -33,12 +33,19 @@
     okular
     qtcreator
     feh
+    steam
     element-desktop
   ];
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   services.tlp.enable = true;
+
+  #steam foo
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  hardware.pulseaudio.support32Bit = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Enable sound.
   sound.enable = true;
