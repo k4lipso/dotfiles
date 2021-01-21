@@ -54,6 +54,11 @@
   environment.pathsToLink = [ "/libexec" ];
   environment.variables.EDITOR = "urxvt-unicode";
 
+  # get some sleep dude...
+  services.redshift.enable = true;
+  location.latitude = 52.5200; # berlin
+  location.longitude = 13.4049;
+
   fonts.enableDefaultFonts = true;
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
