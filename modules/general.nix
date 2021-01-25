@@ -59,6 +59,10 @@
   location.latitude = 52.5200; # berlin
   location.longitude = 13.4049;
 
+  # printing is cool
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.brlaser ];
+
   fonts.enableDefaultFonts = true;
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
