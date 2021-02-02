@@ -74,5 +74,5 @@
     allowed-uris = https://github.com/nixos/nixpkgs
   '';
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  #boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }
