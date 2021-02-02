@@ -1,4 +1,5 @@
 dotfiles/self/wpa.conf
 machines/htznr/network_config.nix
 machines/dsktp/network_config.nix
+machines/ltpt/database_secrets.nix
 deployment_secrets.nix
