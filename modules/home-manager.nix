@@ -2,9 +2,9 @@
 
 let
   home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "0fa2b16a0714e35f472d17dc707ee130a269123f";
-    ref = "master";
+    url = "https://github.com/nix-community/home-manager";
+    rev = "91bd34620d73340be03642279ee0d1c64110ee6c";
+    ref = "release-20.09";
   };
 in
 {
