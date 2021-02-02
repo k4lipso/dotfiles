@@ -20,7 +20,6 @@
   services.nginx.recommendedOptimisation = true;
 
   services.nginx.virtualHosts."storage.dynamicdiscord.de" = {
-    #basicAuth = { name = "password"; };
     forceSSL = true;
     enableACME = true;
   };
@@ -41,4 +40,5 @@
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     '';
   };
+
 }

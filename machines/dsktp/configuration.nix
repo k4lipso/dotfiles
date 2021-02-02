@@ -9,7 +9,6 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
-      #<nixos-hardware/lenovo/thinkpad/t480s>
       ./hardware-configuration.nix
       ../../modules/xserver.nix
       ../../modules/home-manager.nix
