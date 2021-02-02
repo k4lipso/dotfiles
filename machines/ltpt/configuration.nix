@@ -4,14 +4,13 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t480s>
+    [
       ./hardware-configuration.nix
       ../../modules/xserver.nix
-      ../../modules/home-manager.nix
       ../../modules/minimal.nix
       ../../modules/general.nix
       ../../modules/tor.nix
+      #./postgres.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -23,7 +22,7 @@
   networking.useDHCP = false;
   networking.hostId = "1423acbd";
 
-  #networking.firewall.enable = true;
+  networking.firewall.enable = true;
   networking.firewall.allowPing = true;
 
   # Select internationalisation properties.
