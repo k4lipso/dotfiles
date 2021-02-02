@@ -3,7 +3,7 @@
 let
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
-    rev = "c1faa848c5224452660cd6d2e0f4bd3e8d206419";
+    rev = "0fa2b16a0714e35f472d17dc707ee130a269123f";
     ref = "master";
   };
 in
@@ -18,7 +18,7 @@ in
     programs.vim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [ spacevim ];
-        
+
       #plugins = with pkgs.vimPlugins; [
       #  nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
       settings = { ignorecase = true; };
