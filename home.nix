@@ -18,4 +18,17 @@ in
       };
     };
 
+  "gtw" =
+    { ... }:
+    {
+      imports =
+      [
+        machines/gtw/configuration.nix
+      ];
+
+      deployment =
+      {
+        targetHost = secrets.gtw_ip;
+      };
+    };
 }
