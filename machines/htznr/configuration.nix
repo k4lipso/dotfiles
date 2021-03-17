@@ -18,6 +18,7 @@ in
       ./nextcloud.nix
       ./postgresql.nix
       ./hydra.nix
+      ./gitea.nix
     ];
 
   environment.systemPackages = with pkgs; [
