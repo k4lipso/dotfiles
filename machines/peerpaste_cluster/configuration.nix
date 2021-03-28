@@ -13,9 +13,10 @@ in
     [ # Include the results of the hardware scan.
       #./hardware-configuration.nix
       <nixpkgs/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix>
-      ../../modules/home-manager.nix
       ../../modules/minimal.nix
     ];
+
+  nixpkgs.system = "aarch64-linux";
 
   networking.hostName = "mfsync_01"; # let hostname depend on input
 
@@ -25,6 +26,10 @@ in
   services.openssh.ports = [ 22 ];
   users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
   services.openssh.passwordAuthentication = false;
+
+  networking.firewall.allowedUDPPorts = [ 30001 ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+
 
   users.users.kalipso = {
     isNormalUser = true;
