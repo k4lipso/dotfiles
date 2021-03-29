@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
  Keys = import ../../ssh_keys.nix;
@@ -17,8 +17,6 @@ in
     ];
 
   nixpkgs.system = "aarch64-linux";
-
-  networking.hostName = "mfsync_01"; # let hostname depend on input
 
   networking.dhcpcd.enable = true;
 
@@ -37,6 +35,31 @@ in
     openssh.authorizedKeys.keys = Keys.Kalipso;
     shell = pkgs.zsh;
   };
+
+  environment.systemPackages =
+    let
+    mfsync = with pkgs; stdenv.mkDerivation {
+      name = "mfsync";
+      src = pkgs.fetchFromGitHub {
+        owner = "k4lipso";
+        repo = "mfsync";
+        rev = "master";
+        sha256 = "1mqwa5635yay5220lwqzfz9lq7zbw9hww23v9hq7grh1r2cbh697";
+      };
+      enableParallelBuilding = true;
+
+      nativeBuildInputs = [ pkgs.pkgconfig pkgs.cmake pkgs.gnumake42 ];
+      depsBuildBuild = [ ];
+      buildInputs = [ pkgs.spdlog pkgs.fmt pkgs.sqlite pkgs.openssl pkgs.boost172 pkgs.boost-build pkgs.doxygen pkgs.catch2 ];
+
+      installPhase = ''
+        mkdir -p $out/bin
+        cp mfsync $out/bin/
+      '';
+    };
+    in
+    [ mfsync ];
+
 
 
   # This value determines the NixOS release from which the default
