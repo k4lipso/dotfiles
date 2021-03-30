@@ -15,9 +15,11 @@ in
       <nixpkgs/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix>
       ../../modules/minimal.nix
       ./mfsync.nix
+      ./batman.nix
     ];
 
   systemd.services.mfsync-daemon.enable = true;
+  systemd.services.mfsync-mesh-network.enable = true;
 
   nixpkgs.system = "aarch64-linux";
 
