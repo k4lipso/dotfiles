@@ -8,7 +8,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  #boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
 
   environment.systemPackages = with pkgs; [
     wpa_supplicant
@@ -33,7 +34,6 @@
     okular
     qtcreator
     feh
-    steam
     element-desktop
   ];
 

@@ -1,7 +1,7 @@
 {
   network.description = "mfsync cluster";
 
-  "rpi1" =
+  "mfsync_01" =
     { ... }:
     {
       imports =
@@ -16,7 +16,7 @@
       };
     };
 
-  "rpi2" =
+  "mfsync_02" =
     { ... }:
     {
       imports =
