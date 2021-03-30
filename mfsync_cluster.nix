@@ -6,7 +6,7 @@
     {
       imports =
       [
-        machines/peerpaste_cluster/configuration.nix
+        machines/mfsync_cluster/configuration.nix
       ];
 
       networking.hostName = "mfsync_01";
@@ -21,7 +21,7 @@
     {
       imports =
       [
-        machines/peerpaste_cluster/configuration.nix
+        machines/mfsync_cluster/configuration.nix
       ];
 
       networking.hostName = "mfsync_02";

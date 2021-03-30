@@ -30,7 +30,7 @@ in
     serviceConfig = {
       Type = "simple";
       ExecStart = "${mfsync}/bin/mfsync sync 239.255.0.1 /home/kalipso/test";
-      ExecStop = "pkill mfsync";
+      ExecStop = "killall mfsync";
       Restart = "on-failure";
     };
     wantedBy = [ "default.target" ];
