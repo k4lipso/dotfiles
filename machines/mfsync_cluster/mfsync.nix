@@ -24,14 +24,17 @@ in
 {
   environment.systemPackages = with pkgs; [ mfsync ];
 
+  networking.firewall.enable = false;
+
   systemd.services.mfsync-daemon =
   {
     description = "mfsync daemon";
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${mfsync}/bin/mfsync sync 239.255.0.1 /home/kalipso/test";
-      ExecStop = "killall mfsync";
+      ExecStart = "${mfsync}/bin/mfsync sync 239.255.0.1 -i wlan0 eth0 -- /home/kalipso/test";
       Restart = "on-failure";
+      After=["mfsync-mesh-network.service"];
+      Wants=["mfsync-mesh-network.service"];
     };
     wantedBy = [ "default.target" ];
   };
