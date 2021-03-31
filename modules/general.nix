@@ -35,6 +35,7 @@
     qtcreator
     feh
     element-desktop
+    wireshark
   ];
 
   # Enable the OpenSSH daemon.
