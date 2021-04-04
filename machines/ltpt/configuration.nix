@@ -10,6 +10,7 @@
       ../../modules/minimal.nix
       ../../modules/general.nix
       ../../modules/tor.nix
+      ./mfsync_dhcp.nix
       #./postgres.nix
     ];
 
