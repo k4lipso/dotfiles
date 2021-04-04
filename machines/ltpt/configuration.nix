@@ -42,7 +42,7 @@
   users.users.kalipso = {
     isNormalUser = true;
     home = "/home/kalipso";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "vboxusers" ];
     shell = pkgs.zsh;
   };
 
@@ -52,6 +52,9 @@
   services.picom.backend = "glx";
   services.picom.vSync = true;
 
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
