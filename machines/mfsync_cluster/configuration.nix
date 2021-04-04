@@ -23,11 +23,9 @@ in
 
   nixpkgs.system = "aarch64-linux";
 
-  networking.dhcpcd.enable = true;
-
   services.openssh.enable = true;
   services.openssh.ports = [ 22 ];
-  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+  users.users.root.openssh.authorizedKeys.keys = Keys.MfsyncCluster;
   services.openssh.passwordAuthentication = false;
 
   networking.firewall.allowedUDPPorts = [ 30001 ];
@@ -37,7 +35,7 @@ in
   users.users.kalipso = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = Keys.Kalipso;
+    openssh.authorizedKeys.keys = Keys.MfsyncCluster;
     shell = pkgs.zsh;
   };
 
