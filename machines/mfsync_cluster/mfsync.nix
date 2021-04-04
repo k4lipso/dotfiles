@@ -11,9 +11,10 @@ mfsync = with pkgs; stdenv.mkDerivation {
   };
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ pkgs.pkgconfig pkgs.cmake pkgs.gnumake42 ];
+  nativeBuildInputs = [ pkgs.pkgconfig pkgs.cmake pkgs.gnumake ];
   depsBuildBuild = [ ];
-  buildInputs = [ pkgs.spdlog pkgs.fmt pkgs.sqlite pkgs.openssl pkgs.boost172 pkgs.boost-build pkgs.doxygen pkgs.catch2 ];
+  buildInputs = [ pkgs.spdlog pkgs.fmt pkgs.sqlite pkgs.openssl pkgs.boost172
+                  pkgs.boost-build pkgs.doxygen pkgs.catch2 ];
 
   installPhase = ''
     mkdir -p $out/bin
@@ -31,10 +32,11 @@ in
     description = "mfsync daemon";
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${mfsync}/bin/mfsync sync 239.255.0.1 -i wlan0 eth0 -- /home/kalipso/test";
+      ExecStart = "${mfsync}/bin/mfsync sync 239.255.0.1 -i wlan0 eth0 -- /mnt";
       Restart = "on-failure";
-      After=["mfsync-mesh-network.service"];
-      Wants=["mfsync-mesh-network.service"];
+      ExecStartPre="${pkgs.coreutils}/bin/sleep 30";
+      After=["systemd-networkd-wait-online.service"];
+      Wants=["systemd-networkd-wait-online.service"];
     };
     wantedBy = [ "default.target" ];
   };
