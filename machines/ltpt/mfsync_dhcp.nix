@@ -9,6 +9,7 @@
 
   services.dhcpd4 = {
     enable = true;
+    interfaces = [ "enp0s31f6" ];
     extraConfig = ''
       option subnet-mask 255.255.255.0;
       option broadcast-address 10.5.5.255;
