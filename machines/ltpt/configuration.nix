@@ -26,6 +26,9 @@
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
 
+  networking.firewall.allowedUDPPorts = [ 30001 ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+
   # Select internationalisation properties.
   console.font = "Lat2-Terminus16";
   console.keyMap = "us";
