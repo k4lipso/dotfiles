@@ -34,6 +34,7 @@
     okular
     qtcreator
     feh
+    steam
     element-desktop
     wireshark
   ];
