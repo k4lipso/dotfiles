@@ -55,9 +55,15 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "man" ];
+      plugins = [ "git" "vi-mode" ];
       theme = "fino-time";
     };
+  };
+
+  environment.variables = {
+      MODE_INDICATOR = "%F{red}fnord%f";
+      VI_MODE_RESET_PROMPT_ON_MODE_CHANGE = "true";
+      VI_MODE_SET_CURSOR = "true";
   };
 
   programs.gnupg.agent = { enable = true; };
