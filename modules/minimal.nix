@@ -26,18 +26,27 @@
     nmap
     killall
     direnv
+    nix-direnv
     youtube-dl
     unzip
     zip
+    cryptsetup
   ];
+
 
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = 
     ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
+
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
 
   programs.zsh = {
     enable = true;
