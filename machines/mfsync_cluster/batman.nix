@@ -30,10 +30,12 @@ in
 
   systemd.services.mfsync-mesh-network =
   {
-    description = "activates mfsync batman-adv configuration";
+    description = "mfsync-mesh-network batman-adv configuration";
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${start_mfsync_mesh}/bin/start_mfsync_mesh";
+      After=["network-online.target"];
+      Wants=["network-online.target"];
     };
     wantedBy = [ "default.target" ];
   };
