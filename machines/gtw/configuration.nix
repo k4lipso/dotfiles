@@ -11,6 +11,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./networking.nix
       ../../modules/home-manager.nix
       ../../modules/minimal.nix
     ];
@@ -45,10 +46,10 @@ in
     '';
   };
 
-  networking.hostId = "8f5bb625";
-  networking.dhcpcd.enable = true;
+  #networking.hostId = "8f5bb625";
+  #networking.dhcpcd.enable = true;
   networking.usePredictableInterfaceNames = false;
-  networking.hostName = "gtw";
+  #networking.hostName = "gtw";
 
   #systemd.network = {
   #  enable = true;
