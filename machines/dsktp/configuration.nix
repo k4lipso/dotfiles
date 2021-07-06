@@ -21,9 +21,9 @@ in
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   hardware.pulseaudio.support32Bit = true;
 
-  environment.systemPackages = with pkgs; [
-    steam
-  ];
+  #environment.systemPackages = with pkgs; [
+  #  steam
+  #];
 
   boot.initrd.kernelModules = [  "igb" ];
 
