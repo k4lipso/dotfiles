@@ -11,6 +11,7 @@
       ../../modules/general.nix
       ../../modules/tor.nix
       ./mfsync_dhcp.nix
+      ./dnscrypt.nix
       #./postgres.nix
     ];
 
