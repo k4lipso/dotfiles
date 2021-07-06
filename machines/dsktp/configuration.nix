@@ -74,24 +74,15 @@ in
 
   users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
 
+  programs.adb.enable = true; #enable android foo
+
   users.users.kalipso = {
     isNormalUser = true;
     home = "/home/kalipso";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "adbusers" ];
     openssh.authorizedKeys.keys = Keys.Kalipso;
     shell = pkgs.zsh;
   };
-
-  # services.throttled.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
