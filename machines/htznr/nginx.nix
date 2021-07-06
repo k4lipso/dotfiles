@@ -7,6 +7,7 @@
   security.acme.email = "kalipso@c3d2.de";
 
   services.nginx.enable = true;
+
   services.nginx.virtualHosts."dynamicdiscord.de" = {
     #basicAuth = { test1 = "test2"; test3 = "test3"; };
     forceSSL = true;
@@ -41,4 +42,7 @@
     '';
   };
 
+  imports = [
+    ./report.nix
+  ];
 }
