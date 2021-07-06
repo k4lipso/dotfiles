@@ -3,3 +3,10 @@ machines/htznr/network_config.nix
 machines/dsktp/network_config.nix
 machines/ltpt/database_secrets.nix
 deployment_secrets.nix
+machines/mfsync_cluster/measure.txt
+machines/mfsync_cluster/nixpkgs*
+machines/mfsync_cluster/result
+machines/mfsync_cluster/*.img
+machines/mfsync_cluster/*.nmap
+*.tar.xz
+*kexec*
