@@ -31,6 +31,7 @@
     unzip
     zip
     cryptsetup
+    weechat
   ];
 
 
