@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.tor.settings.ClientOnionAuthDir = "/home/kalipso/.config/tor/keys";
+  services.tor.settings.ClientOnionAuthDir = "/var/lib/tor/keys";
 }

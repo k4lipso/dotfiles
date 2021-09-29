@@ -12,6 +12,7 @@
       ../../modules/tor.nix
       ./mfsync_dhcp.nix
       ./dnscrypt.nix
+      ./tor.nix
       #./postgres.nix
     ];
 
