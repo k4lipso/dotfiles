@@ -34,9 +34,11 @@
     okular
     qtcreator
     feh
-    steam
+    # steam
     element-desktop
     wireshark
+    tor-browser-bundle-bin
+    signal-desktop
   ];
 
   # Enable the OpenSSH daemon.
