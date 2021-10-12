@@ -15,6 +15,15 @@
     root = "/var/www/dynamicdiscord.de";
   };
 
+  services.nginx.virtualHosts."license.dynamicdiscord.de" = {
+    forceSSL = true;
+    enableACME = true;
+    root = "/var/www/license.dynamicdiscord.de";
+    locations."/".extraConfig = ''
+      rewrite ^/$ /license.txt;
+    '';
+  };
+
   services.nginx.recommendedProxySettings = true;
   services.nginx.recommendedGzipSettings = true;
   services.nginx.recommendedTlsSettings = true;
