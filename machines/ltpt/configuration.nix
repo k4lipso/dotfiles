@@ -19,7 +19,10 @@
   environment.systemPackages = with pkgs; [
     dhcpcd
     ncmpcpp
+    docker-compose
   ];
+
+  #nixpkgs.config.allowBroken = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.useDHCP = false;
@@ -44,7 +47,7 @@
   users.users.kalipso = {
     isNormalUser = true;
     home = "/home/kalipso";
-    extraGroups = [ "wheel" "vboxusers" ];
+    extraGroups = [ "wheel" "vboxusers" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -56,8 +59,9 @@
 
   programs.ssh.startAgent = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

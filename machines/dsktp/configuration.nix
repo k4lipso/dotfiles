@@ -60,6 +60,10 @@ in
   networking.dhcpcd.enable = false;
   networking.hostId = "1337acbd";
 
+
+  networking.firewall.allowedUDPPorts = [ 30001 ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";

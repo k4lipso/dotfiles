@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  networking.firewall.allowedUDPPorts = [ 30001 ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+
   networking.nat = {
     enable = true;
     internalInterfaces = [ "enp0s31f6" "wlp61s0" ];
