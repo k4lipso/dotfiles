@@ -9,10 +9,19 @@
   services.nginx.enable = true;
 
   services.nginx.virtualHosts."dynamicdiscord.de" = {
-    #basicAuth = { test1 = "test2"; test3 = "test3"; };
     forceSSL = true;
     enableACME = true;
     root = "/var/www/dynamicdiscord.de";
+  };
+
+  services.nginx.virtualHosts."linke-menner.de" = {
+    forceSSL = true;
+    enableACME = true;
+    root = "/var/www/linke-menner.de";
+    locations."/".extraConfig = ''
+      charset utf-8;
+      charset_types *;
+    '';
   };
 
   services.nginx.virtualHosts."license.dynamicdiscord.de" = {
@@ -22,6 +31,18 @@
     locations."/".extraConfig = ''
       rewrite ^/$ /license.txt;
     '';
+  };
+
+  services.nginx.virtualHosts."map.dynamicdiscord.de" = {
+    forceSSL = true;
+    enableACME = true;
+    root = "/var/www/map.dynamicdiscord.de";
+  };
+
+  services.nginx.virtualHosts."maprest.dynamicdiscord.de" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/".proxyPass = "http://localhost:5002";
   };
 
   services.nginx.recommendedProxySettings = true;

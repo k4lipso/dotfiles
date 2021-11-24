@@ -32,6 +32,9 @@
     zip
     cryptsetup
     weechat
+    jq
+    python3
+    inotify-tools
   ];
 
 

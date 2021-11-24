@@ -13,6 +13,7 @@
       ./mfsync_dhcp.nix
       ./dnscrypt.nix
       ./tor.nix
+      ./nginx.nix
       #./postgres.nix
     ];
 

@@ -7,7 +7,7 @@ mfsync = with pkgs; stdenv.mkDerivation {
     owner = "k4lipso";
     repo = "mfsync";
     rev = "master";
-    sha256 = "0rvdm9nlig4xj7a02qrggxqvsadilzyv23kpd430sdaqzswdp2k6";
+    sha256 = "1picg8igs6dnci7i7m50srxjr79rfpi28ra5rfd0fx9bdsw1hwbb";
   };
   enableParallelBuilding = true;
 
