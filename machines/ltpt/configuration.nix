@@ -23,6 +23,8 @@
     docker-compose
   ];
 
+  nixpkgs.config.allowBroken = true;
+
   #nixpkgs.config.allowBroken = true;
 
   networking.hostName = "nixos"; # Define your hostname.
