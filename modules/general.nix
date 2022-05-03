@@ -12,6 +12,7 @@
 
 
   environment.systemPackages = with pkgs; [
+    audacity
     wpa_supplicant
     chromium
     thunderbird
@@ -23,7 +24,6 @@
     acpi
     dolphin
     gnupg
-    gcc9
     ccls
     iw
     neovim
@@ -36,10 +36,18 @@
     feh
     steam
     element-desktop
+    tdesktop
     wireshark
     tor-browser-bundle-bin
     signal-desktop
     sqlitebrowser
+    libreoffice
+    gource
+    mumble
+    pavucontrol
+    qutebrowser
+    remmina
+    simplescreenrecorder
   ];
 
   # Enable the OpenSSH daemon.
