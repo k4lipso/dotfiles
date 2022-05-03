@@ -2,11 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
+    dhcp
     dhcpcd
     inetutils
     tcpdump
     bind
-    wireguard
+    wireguard-tools
     wget
     vim
     git
@@ -17,6 +18,8 @@
     tree
     gnupg
     emacs
+    clang
+    clang-tools
     gcc
     cmake
     zsh
@@ -24,6 +27,14 @@
     rsync
     pass
     nmap
+    openssl
+    screen-message
+    stdman
+    traceroute
+    tigervnc
+    unzip
+    whois
+    zip
     killall
     direnv
     nix-direnv
@@ -35,6 +46,14 @@
     jq
     python3
     inotify-tools
+    calc
+    cloc
+    ffmpeg
+    ddate
+    dnstracer
+    iotop
+    mpv
+    nixops
   ];
 
 
