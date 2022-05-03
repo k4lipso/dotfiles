@@ -14,6 +14,16 @@
     root = "/var/www/dynamicdiscord.de";
   };
 
+  services.nginx.virtualHosts."olafscholznudes.de" = {
+    forceSSL = true;
+    enableACME = true;
+    root = "/var/www/olafscholznudes.de";
+    locations."/".extraConfig = ''
+      charset utf-8;
+      charset_types *;
+    '';
+  };
+
   services.nginx.virtualHosts."linke-menner.de" = {
     forceSSL = true;
     enableACME = true;
