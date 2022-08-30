@@ -63,10 +63,13 @@ in
   users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
   services.openssh.passwordAuthentication = false;
 
+  users.users.root.initialPassword = "test";
+
   users.users.kalipso = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = Keys.Kalipso;
+    initialPassword = "test";
     shell = pkgs.zsh;
   };
 

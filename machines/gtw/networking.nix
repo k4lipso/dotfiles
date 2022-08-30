@@ -4,7 +4,7 @@
   networking = {
 	  hostId = "d4040ec7";
   	hostName = "gtw";
-    nameservers = [ "10.0.1.1" "1.1.1.1" ];
+    nameservers = [ "1.1.1.1" ];
     useDHCP = false;
 
     hosts = lib.mkForce {
@@ -26,11 +26,17 @@
 
     interfaces = {
       eth1 = {
+        name = "eth1";
         useDHCP = true;
+        #ipv4.addresses = [{
+        #  address = "20.0.2.2";
+        #  prefixLength = 24;
+        #}];
       };
 
       #lan = {
       eth0 = {
+        name = "eth0";
         ipv4.addresses = [{
           address = "10.0.1.1";
           prefixLength = 24;
@@ -112,7 +118,7 @@
           option subnet-mask 255.255.255.0;
           option broadcast-address 10.0.1.255;
           option routers 10.0.1.1;
-          option domain-name-servers 10.0.1.1;
+          option domain-name-servers 1.1.1.1;
           range 10.0.1.100 10.0.1.200;
           next-server 10.0.1.1;
           #if exists user-class and option user-class = "iPXE" {
