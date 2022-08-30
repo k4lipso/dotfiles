@@ -2,6 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
+    binutils
+    #binwalk
+    foremost
+    imagemagick
+    sqlmap
     dhcp
     dhcpcd
     inetutils
@@ -78,7 +83,7 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "vi-mode" ];
+      plugins = [ "git" "vi-mode" "colored-man-pages" ];
       theme = "fino-time";
     };
   };

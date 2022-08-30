@@ -10,8 +10,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  hardware.hackrf.enable = true;
 
   environment.systemPackages = with pkgs; [
+    nodejs
+    arduino
+    newsboat
+    godot
     audacity
     wpa_supplicant
     chromium
@@ -48,6 +53,10 @@
     qutebrowser
     remmina
     simplescreenrecorder
+    gqrx
+    sdrangel
+    hackrf
+    gqrx-portaudio
   ];
 
   # Enable the OpenSSH daemon.
@@ -77,7 +86,7 @@
   services.printing.drivers = [ pkgs.brlaser ];
 
   fonts.enableDefaultFonts = true;
-  fonts.fontDir.enable = true;
+  #fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     hermit
     source-code-pro

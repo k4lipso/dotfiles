@@ -1,12 +1,14 @@
 { pkgs, ... }:
 
 {
+  home.stateVersion = "18.09";
+
   programs.vim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ spacevim ];
+    #plugins = with pkgs.vimPlugins; [ spacevim ];
 
-    #plugins = with pkgs.vimPlugins; [
-    #  nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
+    plugins = with pkgs.vimPlugins; [
+      nerdtree vim-nerdtree-tabs nerdtree-git-plugin syntastic fugitive vim-pathogen airline rainbow_parentheses vim-colorschemes ];
     settings = { ignorecase = true; };
   };
 
@@ -14,6 +16,10 @@
     enable = true;
     userName = "kalipso";
     userEmail = "kalipso@c3d2.de";
+    extraConfig = {
+      core = { editor = "vim"; };
+    };
+
   };
 
   xdg.configFile."../.zshrc".source = ../dotfiles/zshrc;

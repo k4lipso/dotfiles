@@ -47,6 +47,10 @@ in
       enable = true;
       userName = "kalipso";
       userEmail = "kalipso@c3d2.de";
+
+      extraConfig = {
+        core = { editor = "vim"; };
+      };
     };
 
     xdg.configFile."../.vimrc".source = ../dotfiles/vimrc;
