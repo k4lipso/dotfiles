@@ -12,16 +12,34 @@ in
   imports =
     [ # Include the results of the hardware scan.
       #./hardware-configuration.nix
-      <nixpkgs/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix>
+      #<nixpkgs/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix>
+      #<nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
       ../../modules/minimal.nix
-      ./mfsync.nix
+      ../../modules/mfsync.nix
       ./batman.nix
+      ./camera.nix
     ];
+
+  #issue 122993 - fixes missing kernel modules
+  nixpkgs.overlays = [
+    (final: super: {
+      makeModulesClosure = x:
+        super.makeModulesClosure (x // { allowMissing = true; });
+    })
+  ];
+
+  boot.kernelPackages = pkgs.linuxPackages_rpi3;
+  boot.loader.raspberryPi = {
+    enable = true;
+    version = 3;
+  };
 
   systemd.services.mfsync-daemon.enable = true;
   systemd.services.mfsync-mesh-network.enable = true;
 
   nixpkgs.system = "aarch64-linux";
+
+  networking.firewall.enable = false;
 
   services.openssh.enable = true;
   services.openssh.ports = [ 22 ];
@@ -37,6 +55,22 @@ in
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = Keys.MfsyncCluster;
     shell = pkgs.zsh;
+  };
+
+  fileSystems = {
+    # Prior to 19.09, the boot partition was hosted on the smaller first partition
+    # Starting with 19.09, the /boot folder is on the main bigger partition.
+    # The following is to be used only with older images. Note such old images should not be considered supported anymore whatsoever, but if you installed back then, this might be needed
+    /*
+    "/boot" = {
+      device = "/dev/disk/by-label/NIXOS_BOOT";
+      fsType = "vfat";
+    };
+    */
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+    };
   };
 
   # This value determines the NixOS release from which the default
