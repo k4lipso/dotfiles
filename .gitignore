@@ -10,3 +10,4 @@ machines/mfsync_cluster/*.img
 machines/mfsync_cluster/*.nmap
 *.tar.xz
 *kexec*
+*.swp
