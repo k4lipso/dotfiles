@@ -42,10 +42,10 @@ in
   };
 
 
-  systemd.network = {
-    enable = true;
-    networks."enp7s0".extraConfig = NetworkConfig;
-  };
+  #systemd.network = {
+  #  enable = true;
+  #  #networks."enp7s0".extraConfig = NetworkConfig;
+  #};
 
 
 #  services.weechat.enable = true;
@@ -91,6 +91,11 @@ in
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  environment.systemPackages = with pkgs; [
+    #linuxPackages.nvidia_x11_vulkan_beta
+    linuxPackages.nvidia_x11
+    cudatoolkit
+  ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
