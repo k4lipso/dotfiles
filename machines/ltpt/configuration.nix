@@ -1,8 +1,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  #keep build time deps and be able to rebuild offline:
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+    '';
+
   imports =
     [
       ./hardware-configuration.nix
@@ -11,17 +17,25 @@
       ../../modules/general.nix
       ../../modules/tor.nix
       ./mfsync_dhcp.nix
+      ./wireguard.nix
       ./dnscrypt.nix
       ./tor.nix
       ./nginx.nix
-      #./postgres.nix
+      ./postgres.nix
     ];
 
   environment.systemPackages = with pkgs; [
+    qemu
     dhcpcd
     ncmpcpp
     docker-compose
+    inputs.mfsync.packages.x86_64-linux.mfsync
   ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "python2.7-pyjwt-1.7.1"
+  ];
+
 
   nixpkgs.config.allowBroken = true;
 
@@ -50,7 +64,7 @@
   users.users.kalipso = {
     isNormalUser = true;
     home = "/home/kalipso";
-    extraGroups = [ "wheel" "vboxusers" "docker" ];
+    extraGroups = [ "wheel" "vboxusers" "docker" "plugdev" ];
     shell = pkgs.zsh;
   };
 

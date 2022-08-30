@@ -6,8 +6,8 @@
 
   networking.nat = {
     enable = true;
-    internalInterfaces = [ "enp0s31f6" "wlp61s0" ];
-    externalInterface = "wg0";
+    internalInterfaces = [ "enp0s31f6" ];
+    externalInterface = "wlp61s0";
   };
 
   services.dhcpd4 = {

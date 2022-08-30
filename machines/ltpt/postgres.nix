@@ -1,10 +1,15 @@
 { pkgs, ... }:
 
 let
-  database_secrets = import ./database_secrets.nix;
+  #database_secrets = import ./database_secrets.nix;
 in
 {
+  #environment.systemPackages = with pkgs; [
+  #  postgresql
+  #];
+
   services.postgresql = {
+    package = pkgs.postgresql_13;
     enable = true;
     enableTCPIP = true;
     port = 5432;
