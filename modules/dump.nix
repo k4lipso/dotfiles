@@ -6,7 +6,7 @@ let
     owner = "kalipso";
     repo = "evidence_dump";
     rev = "master";
-    sha256 = "0y6ay9hjykmgcy566iqr1p9nh5dyjmg21zwfxpw6m6q84whwca2c";
+    sha256 = "1pajndg5hn2l1yp5pbh9djz6jd2143rabrb28vndxqn6bgghqagj";
   };
 
   evDump = (pkgs.callPackage "${repo}/default.nix" {}).package;
