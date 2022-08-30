@@ -16,6 +16,7 @@ in
       #<nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
       ../../modules/minimal.nix
       ../../modules/mfsync.nix
+      ../../modules/dump.nix
       ./batman.nix
       ./camera.nix
     ];
@@ -36,6 +37,7 @@ in
 
   systemd.services.mfsync-daemon.enable = true;
   systemd.services.mfsync-mesh-network.enable = true;
+  systemd.services.evdump-daemon.enable = true;
 
   nixpkgs.system = "aarch64-linux";
 
