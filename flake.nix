@@ -13,10 +13,13 @@
     };
   };
 
-  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-20.09";
+  inputs.nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, utils, nixos-hardware, home-manager, nixpkgs-stable, nixpkgs-unstable }:
+  inputs.mfsync.url = "github:k4lipso/mfsync";
+
+  outputs = { self, utils, nixos-hardware, home-manager,
+              mfsync, nixpkgs-stable, nixpkgs-unstable }@inputs:
 
   let
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
@@ -31,6 +34,7 @@
 
     nixosConfigurations.nixos = nixpkgs-unstable.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs.inputs = inputs;
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-t480s
         ./machines/ltpt/configuration.nix
