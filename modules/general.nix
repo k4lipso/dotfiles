@@ -14,6 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     nodejs
+    node2nix
     arduino
     newsboat
     godot
