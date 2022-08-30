@@ -25,7 +25,7 @@ in
 {
   environment.systemPackages = with pkgs; [ mfsync ];
 
-  networking.firewall.enable = false;
+  #networking.firewall.enable = false;
 
   systemd.services.mfsync-daemon =
   {
