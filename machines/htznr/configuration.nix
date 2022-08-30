@@ -19,12 +19,15 @@ in
       ./postgresql.nix
       ./hydra.nix
       ./gitea.nix
+      ./wireguard.nix
     ];
 
   environment.systemPackages = with pkgs; [
     php
     php74Packages.composer
   ];
+
+  nixpkgs.config.allowBroken = true;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "/dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL1331LAGZR8YH" "/dev/disk/by-id/ata-HGST_HMS5C4040BLE640_PL1331LAGZ7TTH" ];

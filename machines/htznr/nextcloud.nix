@@ -8,7 +8,7 @@
     https = true;
 
     caching.apcu = true;
-    package = pkgs.nextcloud21;
+    package = pkgs.nextcloud24;
 
     config = {
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
