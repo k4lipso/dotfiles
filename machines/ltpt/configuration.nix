@@ -45,7 +45,7 @@
 
   #nixpkgs.config.allowBroken = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "celine"; # Define your hostname.
   networking.useDHCP = false;
   networking.hostId = "1423acbd";
 
