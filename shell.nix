@@ -3,6 +3,7 @@
 , ssh-to-pgp
 , sops-init-gpg-key
 , sops
+, deploy-rs
 }:
 
 mkShell {
@@ -17,5 +18,6 @@ mkShell {
     sops-import-keys-hook
     sops-init-gpg-key
     sops
+    deploy-rs
   ];
 }
