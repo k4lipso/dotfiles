@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     binutils
+    perf-tools
     #binwalk
     foremost
     imagemagick
@@ -66,7 +67,6 @@
     package = pkgs.nixFlakes;
     extraOptions = 
     ''
-      experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
     '';

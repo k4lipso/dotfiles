@@ -94,7 +94,7 @@ in
   environment.systemPackages = with pkgs; [
     #linuxPackages.nvidia_x11_vulkan_beta
     linuxPackages.nvidia_x11
-    cudatoolkit
+    #cudatoolkit
   ];
 
   # This value determines the NixOS release with which your system is to be

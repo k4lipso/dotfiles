@@ -10,7 +10,6 @@
     '';
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
-  # This is the actual specification of the secrets.
   sops.secrets.postgres_password = {};
 
   imports =
