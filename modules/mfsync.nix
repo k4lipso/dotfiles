@@ -44,6 +44,7 @@ mfsync = with pkgs; stdenv.mkDerivation {
     cp mfsync $out/bin/
   '';
 };
+
 in
 {
   environment.systemPackages = with pkgs; [ mfsync ];

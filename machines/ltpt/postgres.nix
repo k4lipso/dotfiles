@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   #database_secrets = import ./database_secrets.nix;
@@ -20,7 +20,7 @@ in
       host all all 0.0.0.0/0 trust
     '';
     initialScript = pkgs.writeText "backend-initScript" ''
-      CREATE ROLE postgres_user WITH LOGIN PASSWORD '${database_secrets.website_password}' CREATEDB;
+      CREATE ROLE postgres_user WITH LOGIN PASSWORD '${config.sops.secrets.postgres_password.path}' CREATEDB;
       CREATE DATABASE website;
       GRANT ALL PRIVILEGES ON DATABASE website TO postgres_user;
     '';

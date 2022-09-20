@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  host_ip = import ../../deployment_secrets.nix;
-in
 {
+  sops.secrets.wireguard_host = {};
+
   # Enable Wireguard
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
@@ -30,7 +29,7 @@ in
           #allowedIPs = [ "50.100.0.1" "91.108.12.0/22" ];
 
           # Set this to the server IP and port.
-          endpoint = host_ip.wireguard_host;
+          endpoint = config.sops.secrets.wireguard_host.path;
 
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
