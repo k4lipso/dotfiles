@@ -1,17 +1,13 @@
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ config, pkgs, inputs, ... }:
 
-{ config, pkgs, ... }:
-
-let
-  Keys = import ../../ssh_keys.nix;
-  NetworkConfig = import ./network_config.nix;
-in
 {
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.secrets.ssh_kalipso = {};
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/xserver.nix
-      ../../modules/home-manager.nix
       ../../modules/minimal.nix
       ../../modules/general.nix
       ../../modules/tor.nix
@@ -34,18 +30,18 @@ in
       # Use a different port than your usual SSH port!
       port = 2233;
       hostKeys = [ "/etc/secrets/initrd/ssh_host_rsa_key" "/etc/secrets/initrd/ssh_host_ed25519_key" ];
-      authorizedKeys = Keys.Kalipso;
+      authorizedKeys = [ config.sops.secrets.ssh_kalipso.path ];
     };
     postCommands = ''
       echo "zfs load-key -a; killall zfs" >> /root/.profile
     '';
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python2.7-pyjwt-1.7.1"
+  ];
 
-  #systemd.network = {
-  #  enable = true;
-  #  #networks."enp7s0".extraConfig = NetworkConfig;
-  #};
+  nixpkgs.config.allowBroken = true;
 
 
 #  services.weechat.enable = true;
@@ -76,7 +72,7 @@ in
   services.openssh.ports = [ 2222 ];
   services.openssh.passwordAuthentication = false;
 
-  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
+  users.users.root.openssh.authorizedKeys.keys = [ config.sops.secrets.ssh_kalipso.path ];
 
   programs.adb.enable = true; #enable android foo
 
@@ -84,7 +80,7 @@ in
     isNormalUser = true;
     home = "/home/kalipso";
     extraGroups = [ "wheel" "adbusers" ];
-    openssh.authorizedKeys.keys = Keys.Kalipso;
+    openssh.authorizedKeys.keys = [ config.sops.secrets.ssh_kalipso.path ] ;
     shell = pkgs.zsh;
   };
 

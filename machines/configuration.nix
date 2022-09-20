@@ -23,6 +23,8 @@ let
 
         sops-nix.nixosModules.sops
       ];
+
+      environment.variables = { EDITOR = "vim"; VISUAL = "vim"; };
     }
   ];
   defaultModules = baseModules;
@@ -41,4 +43,21 @@ in
       }
     ];
   };
+
+  desktop = nixosSystem {
+    system = "x86_64-linux";
+    specialArgs.inputs = inputs;
+    modules = defaultModules ++ [
+      ./dsktp/configuration.nix
+      home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.kalipso = import ../modules/kalipso.nix;
+      }
+    ];
+  };
+
+  #htznr = nixosSystemStable {
+  #
+  #};
 }

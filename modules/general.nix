@@ -75,7 +75,6 @@
   hardware.pulseaudio.enable = true;
 
   environment.pathsToLink = [ "/libexec" ];
-  environment.variables.EDITOR = "urxvt-unicode";
 
   # get some sleep dude...
   services.redshift.enable = true;
