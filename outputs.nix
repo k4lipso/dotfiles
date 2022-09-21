@@ -13,7 +13,7 @@
     pkgs-unstable = nixpkgs-unstable.legacyPackages."${system}";
   in
   {
-    devShell = pkgs-unstable.callPackage ./shell.nix {
+    devShells.default = pkgs-unstable.callPackage ./shell.nix {
       inherit (sops-nix.packages."${pkgs-unstable.system}") sops-import-keys-hook ssh-to-pgp sops-init-gpg-key;
       inherit (deploy.packages."${pkgs-unstable.system}") deploy-rs;
     };
