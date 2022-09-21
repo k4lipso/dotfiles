@@ -4,13 +4,13 @@ let
   Keys = import ../ssh_keys.nix;
 in
 {
-  config.sops.secrets.ssh_kalipso = {};
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.secrets.ssh_kalipso = {};
 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/xserver.nix
-      ../../modules/home-manager.nix
       ../../modules/minimal.nix
       ../../modules/general.nix
       ../../modules/tor.nix
@@ -41,6 +41,14 @@ in
   };
 
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python2.7-pyjwt-1.7.1"
+  ];
+
+
+  nixpkgs.config.allowBroken = true;
+
+
 #  services.weechat.enable = true;
 #  services.tor.enable = true;
 
@@ -69,7 +77,7 @@ in
   services.openssh.ports = [ 2222 ];
   services.openssh.passwordAuthentication = false;
 
-  users.users.root.openssh.authorizedKeys.keyFiles = [ config.sops.secrets.ssh_kalipso.path ];
+  users.users.root.openssh.authorizedKeys.keys = Keys.Kalipso;
 
   programs.adb.enable = true; #enable android foo
 
@@ -77,7 +85,7 @@ in
     isNormalUser = true;
     home = "/home/kalipso";
     extraGroups = [ "wheel" "adbusers" ];
-    openssh.authorizedKeys.keyFiles = [ config.sops.secrets.ssh_kalipso.path ];
+    openssh.authorizedKeys.keys = Keys.Kalipso;
     shell = pkgs.zsh;
   };
 
