@@ -4,6 +4,7 @@
 # for a more complex example.
 keys:
   - &admin_kalipso c4639370c41133a738f643a591ddbc4c3387f1fb
+  - &admin_kalipso_dsktp aef8d6c7e4761fc297cda833df13aebb1011b5d4
   - &machine_ltpt 5256d3b1db581fb4b00879f4f3c19289c891cf62
   - &machine_dsktp f86a52abcc4f2565145269f549e05c588f2ebc10
 creation_rules:
@@ -11,9 +12,11 @@ creation_rules:
     key_groups:
     - pgp:
       - *admin_kalipso
+      - *admin_kalipso_dsktp
       - *machine_ltpt
   - path_regex: dsktp/secrets/secrets.yaml$
     key_groups:
     - pgp:
       - *admin_kalipso
+      - *admin_kalipso_dsktp
       - *machine_dsktp
