@@ -44,4 +44,4 @@ alias deepmix="mpv /home/kalipso/media/music/deepmix128.pls"
 alias nw_up='sudo wpa_supplicant -B -i wlp61s0 -c .config/self/wpa.conf; sudo dhcpcd wlp61s0; wdhcp; sudo bmon -i netlink:notc -o "curses:details;info" -p \!lo'
 alias backupkali='rsync -av --progress -delete -e "ssh -p 12346" /home/kalipso sinc@10.0.0.42:/home/sinc/backup/kali_home/'
 alias ACAB='acpi'
-
+alias nixconf='cd /home/kalipso/proggn/nix/nixos-config'
