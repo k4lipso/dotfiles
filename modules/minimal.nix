@@ -76,6 +76,8 @@
     "/share/nix-direnv"
   ];
 
+  environment.variables = { EDITOR = "vim"; VISUAL = "vim"; };
+
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;

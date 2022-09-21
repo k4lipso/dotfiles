@@ -23,8 +23,6 @@ let
 
         sops-nix.nixosModules.sops
       ];
-
-      environment.variables = { EDITOR = "vim"; VISUAL = "vim"; };
     }
   ];
   defaultModules = baseModules;
